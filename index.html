@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Reunion</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+
+
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: black;
+      overflow: hidden;
+    }
+
+    #loader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #loader img {
+      width: 120px;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="loader">
+  <img src="logo.png" alt="logo">
+</div>
+
+<iframe id="map" src="https://www.google.com/maps/d/embed?mid=1vbvHRWGWPealBgxRciuImrj9Jwlq99Y"></iframe>
+
+<script>
+  setTimeout(() => {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("map").style.display = "block";
+  }, 2000);
+
+  if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js")
+    .then(() => console.log("Service Worker enregistré"))
+    .catch(err => console.log("Erreur SW:", err));
+  }
+</script>
+
+</body>
+</html>
