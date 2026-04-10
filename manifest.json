@@ -1,7 +1,7 @@
 {
   "name": "Reunion",
   "short_name": "Spots",
-  "start_url": "/reunion-family-app/index.html",
+  "start_url": "/reunion-flo-spots/index.html",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
